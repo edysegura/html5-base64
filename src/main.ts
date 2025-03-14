@@ -1,24 +1,24 @@
-const inputEl = document.querySelector<HTMLInputElement>("#input");
-const outputEl = document.querySelector<HTMLTextAreaElement>("#output");
+const inputText = document.querySelector<HTMLInputElement>("#inputText");
+const inputBase64 = document.querySelector<HTMLTextAreaElement>("#inputBase64");
 const copyBtn = document.querySelector<HTMLButtonElement>("#copy");
 const clearBtn = document.querySelector<HTMLButtonElement>("#clear");
 
-if (!inputEl || !outputEl || !copyBtn || !clearBtn) {
+if (!inputText || !inputBase64 || !copyBtn || !clearBtn) {
   throw new Error("Required elements not found");
 }
 
 // Convert input to base64 on input change
-inputEl.addEventListener("input", (e: Event) => {
-  const text = (e.target as HTMLInputElement).value;
+inputText.addEventListener("input", (event: Event) => {
+  const text = (event.target as HTMLInputElement).value;
   const base64 = window.btoa(text);
-  outputEl.value = base64;
+  inputBase64.value = base64;
 });
 
 // Copy base64 output to clipboard
 copyBtn.addEventListener("click", async () => {
-  if (!outputEl.value) return;
+  if (!inputBase64.value) return;
   try {
-    await navigator.clipboard.writeText(outputEl.value);
+    await navigator.clipboard.writeText(inputBase64.value);
     copyBtn.innerText = "Copied!";
     setTimeout(() => {
       copyBtn.innerText = "Copy Base64";
@@ -30,6 +30,6 @@ copyBtn.addEventListener("click", async () => {
 
 // Clear both input and output
 clearBtn.addEventListener("click", () => {
-  inputEl.value = "";
-  outputEl.value = "";
+  inputText.value = "";
+  inputBase64.value = "";
 });
