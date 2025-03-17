@@ -32,9 +32,9 @@ copyBtn.addEventListener("click", async () => {
   if (!inputBase64.value) return;
   try {
     await navigator.clipboard.writeText(inputBase64.value);
-    copyBtn.innerText = "Copied!";
+    copyBtn.textContent = "Copied!";
     setTimeout(() => {
-      copyBtn.innerText = "Copy Base64";
+      copyBtn.textContent = "Copy Base64";
     }, 2000);
   } catch (err: unknown) {
     console.error("Failed to copy:", err);
