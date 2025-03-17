@@ -36,8 +36,8 @@ copyBtn.addEventListener("click", async () => {
     setTimeout(() => {
       copyBtn.textContent = "Copy Base64";
     }, 2000);
-  } catch (err: unknown) {
-    console.error("Failed to copy:", err);
+  } catch (error: unknown) {
+    console.error("Failed to copy:", error);
   }
 });
 
