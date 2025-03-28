@@ -10,6 +10,10 @@
   },
   "devDependencies": {
     "typescript": "~5.7.2",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vite-plugin-pwa": "^0.21.2"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.1.1"
   }
 }
