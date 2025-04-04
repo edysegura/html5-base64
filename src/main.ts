@@ -1,9 +1,8 @@
 const inputText = document.querySelector<HTMLInputElement>("#inputText");
 const inputBase64 = document.querySelector<HTMLTextAreaElement>("#inputBase64");
-const copyBtn = document.querySelector<HTMLButtonElement>("#copy");
 const clearBtn = document.querySelector<HTMLButtonElement>("#clear");
 
-if (!inputText || !inputBase64 || !copyBtn || !clearBtn) {
+if (!inputText || !inputBase64 || !clearBtn) {
   throw new Error("Required elements not found");
 }
 
@@ -24,20 +23,6 @@ inputBase64.addEventListener("input", (event: Event) => {
     const message = "Failed to decode base64";
     console.error(message, error);
     inputText.value = message;
-  }
-});
-
-// Copy base64 output to clipboard
-copyBtn.addEventListener("click", async () => {
-  if (!inputBase64.value) return;
-  try {
-    await navigator.clipboard.writeText(inputBase64.value);
-    copyBtn.textContent = "Copied!";
-    setTimeout(() => {
-      copyBtn.textContent = "Copy Base64";
-    }, 2000);
-  } catch (error: unknown) {
-    console.error("Failed to copy:", error);
   }
 });
 
